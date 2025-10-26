@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import os
 import requests
 import pyqrcode
@@ -7,6 +8,7 @@ from io import BytesIO
 import base64
 
 app = Flask(__name__)
+CORS(app, origins=["https://br-seguidores.myshopify.com"])
 
 # Variáveis de ambiente
 SHOPIFY_STORE = os.environ.get("SHOPIFY_STORE")
@@ -65,3 +67,4 @@ def checkout():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+
